@@ -83,7 +83,7 @@ http:
 					w.WriteHeader(http.StatusNoContent)
 				}))
 				for i := range tc.burst + 2 {
-					req := httptest.NewRequest(http.MethodGet, "http://localhost/", nil)
+					req := httptest.NewRequestWithContext(t.Context(), http.MethodGet, "http://localhost/", nil)
 					req.RemoteAddr = "192.0.2.1:1234"
 					req.Header.Set("X-Client-ID", "client-a")
 					wantStatus := http.StatusNoContent

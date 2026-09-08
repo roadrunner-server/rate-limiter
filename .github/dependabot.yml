@@ -1,0 +1,25 @@
+version: 2
+
+updates:
+  - package-ecosystem: gomod
+    directories:
+      - "/"
+      - "/tests"
+    schedule:
+      interval: daily
+    assignees:
+      - "rustatian"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: daily
+    assignees:
+      - "rustatian"
+
+  - package-ecosystem: composer
+    directory: "/tests/php_test_files"
+    schedule:
+      interval: daily
+    assignees:
+      - "rustatian"

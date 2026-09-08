@@ -3,6 +3,7 @@ package ratelimiter
 import (
 	"crypto/sha256"
 	"io"
+	"maps"
 	"math"
 	"net"
 	"net/http"
@@ -143,12 +144,10 @@ func (p *Plugin) allow(key string) (int, int64) {
 
 	now := time.Now()
 	if !now.Before(p.nextCleanup) {
-		for k, bucket := range p.buckets {
-			// A full bucket can be recreated without granting extra tokens.
-			if bucket.TokensAt(now) >= float64(p.cfg.Burst) {
-				delete(p.buckets, k)
-			}
-		}
+		// A full bucket can be recreated without granting extra tokens.
+		maps.DeleteFunc(p.buckets, func(_ string, bucket *rate.Limiter) bool {
+			return bucket.TokensAt(now) >= float64(p.cfg.Burst)
+		})
 		p.nextCleanup = now.Add(time.Minute)
 	}
 
