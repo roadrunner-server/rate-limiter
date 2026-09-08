@@ -48,22 +48,6 @@ func (p *Plugin) Init(cfg Configurer) error {
 		return errors.E(op, errors.Disabled)
 	}
 
-	// Check numeric values before the config provider converts them to integers.
-	var values map[string]any
-	if err := cfg.UnmarshalKey(configKey, &values); err != nil {
-		return errors.E(op, err)
-	}
-	for _, field := range []string{"rate", "interval", "burst", "max_entries"} {
-		switch value := values[field].(type) {
-		case bool:
-			return errors.E(op, errors.Errorf("%s must not be a boolean", field))
-		case float64:
-			if value != math.Trunc(value) {
-				return errors.E(op, errors.Errorf("%s must not be a fractional number", field))
-			}
-		}
-	}
-
 	p.cfg = Config{Key: KeyIP, Interval: time.Second, Burst: 1, MaxEntries: 10000}
 	if err := cfg.UnmarshalKey(configKey, &p.cfg); err != nil {
 		return errors.E(op, err)

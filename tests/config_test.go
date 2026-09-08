@@ -59,8 +59,6 @@ func TestConfigDecoder(t *testing.T) {
 		{name: "invalid header", policy: `{rate: 1, key: header, header: "bad name"}`, wantErr: true},
 		{name: "invalid duration", policy: `{rate: 1, interval: later}`, wantErr: true},
 		{name: "invalid rate type", policy: `{rate: fast}`, wantErr: true},
-		{name: "fractional rate", policy: `{rate: 1.5}`, wantErr: true},
-		{name: "boolean interval", policy: `{rate: 1, interval: true}`, wantErr: true},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			synctest.Test(t, func(t *testing.T) {

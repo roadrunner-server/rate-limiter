@@ -31,13 +31,7 @@ func (s stubConfigurer) UnmarshalKey(name string, out any) error {
 	if s.err != nil {
 		return s.err
 	}
-	switch target := out.(type) {
-	case *Config:
-		s.configure(target)
-	case *map[string]any:
-	default:
-		return errors.Str("unexpected configuration target")
-	}
+	s.configure(out.(*Config))
 	return nil
 }
 
