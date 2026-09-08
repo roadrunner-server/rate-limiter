@@ -4,7 +4,7 @@
   "license": "MIT",
   "require": {
     "nyholm/psr7": "^1.8",
-    "spiral/roadrunner-http": "^3.0",
+    "spiral/roadrunner-http": "^4.1",
     "spiral/roadrunner-worker": "^3.0"
   }
 }
