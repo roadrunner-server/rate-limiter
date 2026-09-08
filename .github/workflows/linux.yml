@@ -1,0 +1,42 @@
+name: rate-limiter
+
+on:
+  push:
+    branches: [master, stable]
+  pull_request:
+    branches: [master, stable]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+          cache-dependency-path: |
+            go.sum
+            tests/go.sum
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.5"
+          extensions: sockets
+          tools: composer:v2
+          coverage: none
+      - name: Install PHP dependencies
+        working-directory: tests/php_test_files
+        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Unit tests
+        run: go test -timeout 5m -race -tags=debug -cover ./...
+      - name: Integration tests
+        working-directory: tests
+        run: go test -timeout 5m -race -tags=debug -coverpkg=github.com/roadrunner-server/rate-limiter/v6/... -cover ./...
+      - name: Check the root module
+        run: go vet ./...
+      - name: Check the integration module
+        working-directory: tests
+        run: go vet ./...
