@@ -2,6 +2,8 @@ module tests
 
 go 1.27
 
+toolchain go1.27.1
+
 require (
 	github.com/roadrunner-server/config/v6 v6.0.0-beta.4
 	github.com/roadrunner-server/endure/v2 v2.6.2
@@ -31,7 +33,7 @@ require (
 	github.com/mattn/go-colorable v0.1.15 // indirect
 	github.com/mattn/go-isatty v0.0.24 // indirect
 	github.com/mholt/acmez v1.2.0 // indirect
-	github.com/mholt/acmez/v3 v3.1.6 // indirect
+	github.com/mholt/acmez/v3 v3.1.7 // indirect
 	github.com/miekg/dns v1.1.73 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/pelletier/go-toml/v2 v2.4.3 // indirect
@@ -40,8 +42,8 @@ require (
 	github.com/prometheus/common v0.71.0 // indirect
 	github.com/prometheus/procfs v0.22.0 // indirect
 	github.com/quic-go/qpack v0.6.0 // indirect
-	github.com/quic-go/quic-go v0.62.0 // indirect
-	github.com/roadrunner-server/api-go/v6 v6.0.0-beta.14 // indirect
+	github.com/quic-go/quic-go v0.63.0 // indirect
+	github.com/roadrunner-server/api-go/v6 v6.0.0-beta.15 // indirect
 	github.com/roadrunner-server/api-plugins/v6 v6.0.0-beta.2 // indirect
 	github.com/roadrunner-server/context v1.3.0 // indirect
 	github.com/roadrunner-server/errors v1.5.0 // indirect
@@ -71,12 +73,12 @@ require (
 	go.uber.org/zap/exp v0.3.0 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/crypto v0.57.0 // indirect
-	golang.org/x/net v0.58.0 // indirect
+	golang.org/x/net v0.59.0 // indirect
 	golang.org/x/sync v0.23.0 // indirect
 	golang.org/x/sys v0.48.0 // indirect
 	golang.org/x/text v0.42.0 // indirect
 	golang.org/x/time v0.16.0 // indirect
-	google.golang.org/genproto v0.0.0-20260908043556-f8649ddbbfe6 // indirect
+	google.golang.org/genproto v0.0.0-20260921155816-b14227669459 // indirect
 	google.golang.org/protobuf v1.36.12 // indirect
 )
 

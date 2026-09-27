@@ -2,6 +2,8 @@ module github.com/roadrunner-server/rate-limiter/v6
 
 go 1.27
 
+toolchain go1.27.1
+
 require (
 	github.com/roadrunner-server/context v1.3.0
 	github.com/roadrunner-server/errors v1.5.0
@@ -11,7 +13,7 @@ require (
 	go.opentelemetry.io/otel v1.46.0
 	go.opentelemetry.io/otel/sdk v1.46.0
 	go.opentelemetry.io/otel/trace v1.46.0
-	golang.org/x/net v0.58.0
+	golang.org/x/net v0.59.0
 	golang.org/x/time v0.16.0
 )
 
